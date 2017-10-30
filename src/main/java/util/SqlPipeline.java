@@ -13,15 +13,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class SqlPipeline implements Pipeline{
-    //主题表
-    String topicTable = "domain_topic";
-    //分面表
-    String facetTable = "facet";
-    //碎片表
-    String fragmentTable = "assemble_fragment";
-    //课程名
-    String course = "数据结构";
-    //
+
 
     public void process(ResultItems resultItems, Task task) {
         for (Map.Entry<String, Object> entry : resultItems.getAll().entrySet()){
@@ -29,7 +21,7 @@ public class SqlPipeline implements Pipeline{
                 //分面信息
                 Map<String,Object> facetTableMap = resultItems.getRequest().getExtras();
 
-                String addSql = "insert into " + fragmentTable
+                String addSql = "insert into " + Config.fragmentTable
                         + "(FragmentContent,FragmentScratchTime,TermID,TermName,FacetName,FacetLayer,ClassName) values (?,?,?,?,?,?,?)";
 
                 //定义插入语句参数

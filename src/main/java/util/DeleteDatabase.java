@@ -1,6 +1,5 @@
-package com.company.utils;
+package util;
 
-import com.company.app.Config;
 
 import java.util.*;
 
@@ -9,7 +8,7 @@ public class DeleteDatabase {
     public static void main(String[] args) {
         String domainName = "计算机编程";
         // 删除数据库中这门课程的数据
-        List<String> tableList = new ArrayList<>();
+        List<String> tableList = new ArrayList<String>();
         tableList.add(Config.DOMAIN_TABLE);
         tableList.add(Config.DOMAIN_LAYER_TABLE);
         tableList.add(Config.DOMAIN_LAYER_FUZHU_TABLE);
@@ -39,7 +38,7 @@ public class DeleteDatabase {
      * @param domainName 领域名
      */
     public static void deleteByTableAndDomain(String table, String domainName) {
-        mysqlUtils mysql = new mysqlUtils();
+        Mysql mysql = new Mysql();
         String sql = "delete from " + table + " where ClassName = ?";
         List<Object> params = new ArrayList<Object>();
         params.add(domainName);
@@ -55,9 +54,9 @@ public class DeleteDatabase {
      * 获取所有表格当前最大的编号值+1，设置每个表格自动增长的值为该值
      */
     public static HashMap<String, Integer> getMaxId() {
-        HashMap<String, Integer> map = new HashMap<>();
-        mysqlUtils mysql = new mysqlUtils();
-        List<Object> params = new ArrayList<>();
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        Mysql mysql = new Mysql();
+        List<Object> params = new ArrayList<Object>();
         String sqlDomain = "select max(ClassID) as maxClassID from " + Config.DOMAIN_TABLE;
         String sqlDomainLayer = "select max(TermID) as maxTermID from " + Config.DOMAIN_LAYER_TABLE;
         String sqlDomainLayerFuzhu = "select max(TermID) as maxTermID from " + Config.DOMAIN_LAYER_FUZHU_TABLE;
@@ -98,10 +97,10 @@ public class DeleteDatabase {
      * @param map
      */
     public static void resetTableIncrement(HashMap<String, Integer> map) {
-        mysqlUtils mysql = new mysqlUtils();
+        Mysql mysql = new Mysql();
         for (String table : map.keySet()) {
             String sql = "alter table " + table + " auto_increment = ?";
-            List<Object> params = new ArrayList<>();
+            List<Object> params = new ArrayList<Object>();
             params.add(map.get(table));
             try {
                 mysql.addDeleteModify(sql, params);

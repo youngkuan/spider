@@ -1,11 +1,10 @@
 package util;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ZhihuProcessorDAO {
+public class ProcessorSQL {
     /**
      * 判断表格，判断某门课程的数据是否已经在这个数据表中存在
      * 适用表格：domain_layer，domain_topic，dependency
