@@ -22,7 +22,6 @@ public class Translate {
 
     protected static final String URL_TEMPLATE ="http://www.iciba.com/{0}";
     protected static final String CSSQUERY ="li.clearfix>p>span";
-
     protected static final String ENCODING ="UTF-8";
 
     /**
@@ -48,8 +47,9 @@ public class Translate {
             ele = doc.select(CSSQUERY).first();
             result = ele.text();
             //去除分号
-            result = result.substring(0,result.length()-1);
-
+            if(result.indexOf("；")!=-1){
+                result = result.substring(0,result.length()-1);
+            }
         }catch (Exception err){
             System.out.println(err.getMessage());
         }
@@ -92,7 +92,7 @@ public class Translate {
     }
 
     public static void main(String[] args){
-        String str = "China";
+        String str = "中国";
         if(isChinese(str.charAt(0))){
             System.out.println(translateCh2En(str));
         }
