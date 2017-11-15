@@ -24,9 +24,7 @@ public class Mysql {
     // 加载驱动
     private final String DRIVER = "com.mysql.jdbc.Driver";
     // 设置url等参数
-    public static String MYSQL_URL = "jdbc:mysql://localhost:3306/yotta_course_data?user=root&password=root&characterEncoding=UTF8";
-
-    private final String URL = MYSQL_URL;
+    private final String URL = Config.MYSQL_URL;
     // 定义数据库的连接
     private Connection connection;
     // 定义sql语句的执行对象
