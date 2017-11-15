@@ -49,7 +49,7 @@ public class QuoraProcessor implements PageProcessor{
             requests.add(request.setUrl(url).setExtras(facetInformation));
         }
         //3.创建ZhihuProcessor
-        QuoraSpider.create(new QuoraProcessor())
+        YangKuanSpider.create(new QuoraProcessor())
                 .addRequests(requests)
                 .thread(5)
                 .addPipeline(new SqlPipeline())

@@ -42,7 +42,7 @@ public class ZhihuProcessor implements PageProcessor{
             requests.add(request.setUrl(url).setExtras(facetInformation));
         }
         //3.创建ZhihuProcessor
-        ZhihuSpider.create(new ZhihuProcessor())
+        YangKuanSpider.create(new ZhihuProcessor())
                 .addRequests(requests)
                 .thread(5)
                 .addPipeline(new SqlPipeline())
